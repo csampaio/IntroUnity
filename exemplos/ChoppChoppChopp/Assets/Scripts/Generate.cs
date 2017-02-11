@@ -26,7 +26,7 @@ public class Generate : ConditionBasedBehavior {
 	// Update is called once per frame
 	public override void OnConditionSatisfied()
 	{
-		Debug.Log("Generate::OnConditionSatisfied");
+		//Debug.Log("Generate::OnConditionSatisfied");
 		SetupGeneratedObject(GenerateObject(prefab));
 	}
 
