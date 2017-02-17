@@ -1,0 +1,644 @@
+fileFormatVersion: 2
+guid: 99640e81ac42bea4e893d321c6db9004
+timeCreated: 1487291147
+licenseType: Pro
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: sprites-tucuman_0
+    21300002: sprites-tucuman_1
+    21300004: sprites-tucuman_2
+    21300006: sprites-tucuman_3
+    21300008: sprites-tucuman_4
+    21300010: sprites-tucuman_5
+    21300012: sprites-tucuman_6
+    21300014: sprites-tucuman_7
+    21300016: sprites-tucuman_8
+    21300018: sprites-tucuman_9
+    21300020: sprites-tucuman_10
+    21300022: sprites-tucuman_11
+    21300024: sprites-tucuman_12
+    21300026: sprites-tucuman_13
+    21300028: sprites-tucuman_14
+    21300030: sprites-tucuman_15
+    21300032: sprites-tucuman_16
+    21300034: sprites-tucuman_17
+    21300036: sprites-tucuman_18
+    21300038: sprites-tucuman_19
+    21300040: sprites-tucuman_20
+    21300042: sprites-tucuman_21
+    21300044: sprites-tucuman_22
+    21300046: sprites-tucuman_23
+    21300048: sprites-tucuman_24
+    21300050: sprites-tucuman_25
+    21300052: sprites-tucuman_26
+    21300054: sprites-tucuman_27
+    21300056: sprites-tucuman_28
+    21300058: sprites-tucuman_29
+    21300060: sprites-tucuman_30
+    21300062: sprites-tucuman_31
+    21300064: sprites-tucuman_32
+    21300066: sprites-tucuman_33
+    21300068: sprites-tucuman_34
+    21300070: sprites-tucuman_35
+    21300072: sprites-tucuman_36
+    21300074: sprites-tucuman_37
+    21300076: sprites-tucuman_38
+    21300078: sprites-tucuman_39
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 40
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sprites-tucuman_0
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 176
+        width: 48
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_1
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 176
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_2
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 175
+        width: 33
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_3
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 175
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_4
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 174
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_5
+      rect:
+        serializedVersion: 2
+        x: 419
+        y: 202
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_6
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 201
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_7
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 197
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_8
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 198
+        width: 29
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_9
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 196
+        width: 20
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_10
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 198
+        width: 23
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_11
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 199
+        width: 24
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_12
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 202
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_13
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 201
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_14
+      rect:
+        serializedVersion: 2
+        x: 586
+        y: 197
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_15
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 197
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_16
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 201
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_17
+      rect:
+        serializedVersion: 2
+        x: 633
+        y: 202
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_18
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 102
+        width: 33
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_19
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 102
+        width: 26
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_20
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 102
+        width: 35
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_21
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 103
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_22
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 103
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_23
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 103
+        width: 17
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_24
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 103
+        width: 27
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_25
+      rect:
+        serializedVersion: 2
+        x: 389
+        y: 103
+        width: 34
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_26
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 102
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_27
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 102
+        width: 29
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_28
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 102
+        width: 22
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_29
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 35
+        width: 41
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_30
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 35
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_31
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 35
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_32
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 36
+        width: 47
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_33
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 36
+        width: 43
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_34
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 36
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_35
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 36
+        width: 38
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_36
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 36
+        width: 42
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_37
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 35
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_38
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 35
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: sprites-tucuman_39
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 35
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
