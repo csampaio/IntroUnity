@@ -12,11 +12,17 @@ public class BulletController : MonoBehaviour {
         animCtrl = GetComponent<Animator>();
         rgbody = GetComponent<Rigidbody2D>();
         GetComponent<SpriteRenderer>().flipX = isLeft;
+        Fire();
     }
 
     void FixedUpdate()
     {
-        Vector2 force = Vector2.right * 20 * Time.deltaTime;
+        
+    }
+
+    void Fire()
+    {
+        Vector2 force = Vector2.right * 600 * Time.deltaTime;
         if (isLeft)
         {
             force *= -1;

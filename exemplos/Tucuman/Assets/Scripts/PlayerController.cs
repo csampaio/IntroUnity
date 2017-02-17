@@ -70,7 +70,10 @@ public class PlayerController : MonoBehaviour {
 
     void HandleVerticalMoviment()
     {
-
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            rigidbody2D.AddForce(Vector2.up * 200, ForceMode2D.Impulse);
+        }
     }
 
     void MoveCharacterController()
