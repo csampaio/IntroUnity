@@ -12,18 +12,24 @@ public class MegamanController : MonoBehaviour {
     public float maxVelocity = 80f; // pixel/seconds
 
     public Vector3 moveSpeed = Vector3.zero;
+    public float jumpForce = 400f;
 
     [Header("Components")]
-    public SpriteRenderer spriterenderer;
-    public Animator animator;
+    private SpriteRenderer spriterenderer;
+    private Animator animator;
     private Rigidbody2D rigidbody2D;
 
     [Header("Animation")]
     public bool isFacingLeft = false;
     public bool isRunning = false;
+    public bool isGrounded = false;
+    public bool isFalling = false;
+    public bool setJumpTrigger = false;
+    public bool setFallTrigger = false;
+    public bool setLandTrigger = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rigidbody2D = GetComponent<Rigidbody2D>();
         spriterenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -40,19 +46,57 @@ public class MegamanController : MonoBehaviour {
     void UpdateAnimatorParameters()
     {
         animator.SetBool("isRunning", isRunning);
+        if (setJumpTrigger)
+        {
+            animator.SetTrigger("Jump");
+            setJumpTrigger = false;
+        } else
+        {
+            animator.ResetTrigger("Jump");
+        }
+
+        if (setFallTrigger)
+        {
+            animator.SetTrigger("Fall");
+            setFallTrigger = false;
+        }
+        else
+        {
+            animator.ResetTrigger("Fall");
+        }
+
+        if (setLandTrigger)
+        {
+            animator.SetTrigger("Land");
+            setLandTrigger = false;
+        }
+        else
+        {
+            animator.ResetTrigger("Land");
+        }
     }
 
     void HandleHorizontalMoviment()
     {
-        
         moveSpeed.x = Input.GetAxis("Horizontal") * (maxVelocity / pixelToUnit);
-        if (moveSpeed.x != 0)
+        if (RaycastAgainstLayer("Ground", groundCheck))
         {
-            isRunning = true;
-        } else
+            isGrounded = true;
+            if (moveSpeed.x != 0)
+            {
+                isRunning = true;
+            }
+            else
+            {
+                isRunning = false;
+            }
+        }
+        else
         {
+            isGrounded = false;
             isRunning = false;
         }
+        
 
         if (Input.GetAxis("Horizontal") < 0 && !isFacingLeft)
         {
@@ -67,8 +111,31 @@ public class MegamanController : MonoBehaviour {
 
     void HandleVerticalMoviment()
     {
-        RaycastAgainstLayer("Ground", groundCheck);
-
+        moveSpeed.y = rigidbody2D.velocity.y;
+        if (isGrounded)
+        {
+            if (isFalling)
+            {
+                setLandTrigger = true;
+                isFalling = false;
+            } else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rigidbody2D.AddForce(Vector2.up * jumpForce);
+                setJumpTrigger = true;
+                isGrounded = false;
+            }
+        } else
+        {
+            if (moveSpeed.y > 0 && Input.GetKeyUp(KeyCode.Space))
+            {
+                moveSpeed.y = 0;
+            }
+            if (moveSpeed.y < 0 && !isFalling)
+            {
+                isFalling = true;
+                setFallTrigger = true;
+            }
+        }
     }
 
     void MoveCharacterController()
