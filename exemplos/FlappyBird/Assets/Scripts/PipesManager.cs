@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public partial class GameMessage
+{
+    public const string StopScroll = "StopScroll";
+}
+
 public class PipesManager : MonoBehaviour {
     [Header("References")]
     public GameObject pipePrefab;
@@ -57,5 +62,10 @@ public class PipesManager : MonoBehaviour {
 
             firstPipeIndex = (firstPipeIndex + 1) % pipes.Length;
         }
+    }
+
+    public void StopAllScroll()
+    {
+        BroadcastMessage(GameMessage.StopScroll);
     }
 }

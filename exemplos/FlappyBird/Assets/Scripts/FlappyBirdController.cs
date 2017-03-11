@@ -8,9 +8,11 @@ public class FlappyBirdController : MonoBehaviour {
     private Rigidbody2D rb;
     public float flappyVelocity = 300;
     private bool isDead = false;
+    private GameManager gameManager;
 
 	// Use this for initialization
 	void Start () {
+        gameManager = FindObjectOfType<GameManager>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         Vector3 startPos = Camera.main.ViewportToWorldPoint(new Vector3(0.2f, 0.8f));
@@ -24,7 +26,7 @@ public class FlappyBirdController : MonoBehaviour {
         {
             return;
         }
-		if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             FlyBirdFly();
         }
@@ -44,7 +46,8 @@ public class FlappyBirdController : MonoBehaviour {
         if (collision.collider.CompareTag("Pipe"))
         {
             isDead = true;
-            Time.timeScale = 0;
+            gameManager.PlayerIsDead();
+            //Time.timeScale = 0;
         }
     }
 }

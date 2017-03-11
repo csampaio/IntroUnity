@@ -11,6 +11,7 @@ public class ScrollTexture : MonoBehaviour {
     public Vector2 scrollVelocity;
 
     private Vector2 scrollOffset;
+    private bool isStopped = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,7 +21,14 @@ public class ScrollTexture : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (isStopped)
+            return;
         scrollOffset += scrollVelocity * Time.deltaTime;
         material.mainTextureOffset = scrollOffset;
 	}
+
+    void StopScroll()
+    {
+        isStopped = true;
+    }
 }

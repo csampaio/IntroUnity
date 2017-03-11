@@ -5,6 +5,7 @@ using UnityEngine;
 public class PipeScroll : MonoBehaviour {
 
     public float pipeVelocity;
+    private bool isStopped = false;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +14,12 @@ public class PipeScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.position += Vector3.left * pipeVelocity * Time.deltaTime;	
+        if (!isStopped)
+            transform.position += Vector3.left * pipeVelocity * Time.deltaTime;	
 	}
+
+    void StopScroll()
+    {
+        isStopped = true;
+    }
 }
