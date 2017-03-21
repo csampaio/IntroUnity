@@ -9,6 +9,10 @@ public class ScrollTexture : MonoBehaviour {
 
     [Header("Velocity")]
     public Vector2 scrollVelocity;
+	public Vector2 constantScroolingVelocity;
+
+	[Header("Player")]
+	public PlayerController player;
 
     private Vector2 scrollOffset;
 
@@ -20,7 +24,7 @@ public class ScrollTexture : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scrollOffset += scrollVelocity * Time.deltaTime;
-        material.mainTextureOffset = scrollOffset;
+		scrollOffset += (scrollVelocity * player.horizontalSpeed + constantScroolingVelocity) * Time.deltaTime;
+		material.mainTextureOffset = scrollOffset;
 	}
 }
