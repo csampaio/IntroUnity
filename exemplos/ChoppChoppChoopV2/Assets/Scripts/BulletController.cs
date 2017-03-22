@@ -14,7 +14,7 @@ public class BulletController : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
         EventHandler handle = BulletHits;
-        if ( other.IsTouching(collider2D))
+        if ( other.IsTouching(collider2D) && handle != null)
         {
             handle(gameObject, EventArgs.Empty);
         }

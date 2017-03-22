@@ -6,14 +6,20 @@ public class ScrollObjects : MonoBehaviour {
 
 	PlayerController player;
 
-	void Start() {
+	protected virtual void Start() {
 		player = FindObjectOfType<PlayerController> ();
 	}
 
 	void Update () {
-		if (player.horizontalSpeed != 0) {
-			transform.position += Vector3.left * player.horizontalSpeed * Time.deltaTime * 3;
-		}
+        ScrollByPlayerMoviment();
 	}
+
+    protected virtual void ScrollByPlayerMoviment()
+    {
+        if (player.horizontalSpeed != 0)
+        {
+            transform.position += Vector3.left * player.horizontalSpeed * Time.deltaTime * 3;
+        }
+    }
 
 }
