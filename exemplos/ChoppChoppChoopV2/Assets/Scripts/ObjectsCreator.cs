@@ -14,31 +14,22 @@ public class ObjectsCreator : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         player = FindObjectOfType<PlayerController>();
-		StartCoroutine(SpawnObject(peoples[0], 2f, 5f));
-        StartCoroutine(SpawnBuilds(3f,7f));
-	}
+		StartCoroutine(RandonSpawn(peoples, 2f, 5f));
+        StartCoroutine(RandonSpawn(builds, 3f,7f));
+        StartCoroutine(RandonSpawn(Enemies, 2f, 10f));
+    }
 	
 
-	private IEnumerator SpawnObject(GameObject obj, float minDelay, float maxDelay) {
-        if (player.horizontalSpeed > 0)
-        {
-            Instantiate(obj, spawnPoint.position, Quaternion.identity, this.transform);
-        }
-        float delay = Random.Range(minDelay, maxDelay);
-        yield return new WaitForSeconds (delay);
-		StartCoroutine (SpawnObject(obj, maxDelay, minDelay));
-	}
-
-    private IEnumerator SpawnBuilds(float minDelay, float maxDelay)
+    private IEnumerator RandonSpawn(GameObject[] prefabs, float minDelay, float maxDelay)
     {
-        int i = Random.Range(0, builds.Length);
-        GameObject build = builds[i];
+        int i = Random.Range(0, prefabs.Length);
+        GameObject item = prefabs[i];
         if (player.horizontalSpeed > 0)
         {
-            Instantiate(build, spawnPoint.position, Quaternion.identity, this.transform);
+            Instantiate(item, spawnPoint.position, Quaternion.identity, this.transform);
         }
         float delay = Random.Range(minDelay, maxDelay);
         yield return new WaitForSeconds(delay);
-        StartCoroutine(SpawnBuilds(maxDelay, minDelay));
+        StartCoroutine(RandonSpawn(prefabs, maxDelay, minDelay));
     }
 }

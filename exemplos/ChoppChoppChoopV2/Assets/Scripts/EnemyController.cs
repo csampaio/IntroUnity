@@ -7,7 +7,7 @@ public class EnemyController : ScrollObjects {
     private Animator animator;
     private bool isMoving = true;
     private bool isAttacking = false;
-    public GameObject bulletPrefab;
+    private GunController gun;
     public Transform cannonPosition;
 
     protected override void Start()
@@ -15,6 +15,7 @@ public class EnemyController : ScrollObjects {
         base.Start();
         animator = GetComponent<Animator>();
         StartCoroutine(StartShoot());
+        gun = GetComponentInChildren<GunController>();
     }
 
 
@@ -32,10 +33,8 @@ public class EnemyController : ScrollObjects {
 
     private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, cannonPosition.position, cannonPosition.rotation);
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-        bullet.SetActive(true);
-        bulletRb.AddRelativeForce(Vector2.left * 150);
+        if (gun != null)
+            gun.FireGun();
     }
 
     private IEnumerator StartShoot()

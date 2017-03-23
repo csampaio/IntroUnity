@@ -5,13 +5,11 @@ using System;
 
 public class PlayerController : MonoBehaviour {
 
+    [Header("Chopp Config")]
 	public Vector2 velocity;
 	public float horizontalSpeed { get; set; }
-	[Header("MachineGun Config")]
-	public int maxMachineGunBullets = 10;
-	public Transform machineGun;
-	public GameObject bulletsPrefab;
-	private Queue<GameObject> bulletsLoaded;
+
+    private Queue<GameObject> bulletsLoaded;
 	private List<GameObject> bulletsShooted;
 
 	private const float ROTATE_VELOCITY = 30f;
@@ -20,14 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private const float DELTA_GRAVITY = 2f;
 
 	void Start () {
-		bulletsLoaded = new Queue<GameObject> (maxMachineGunBullets);
-		for (int i = 0; i < maxMachineGunBullets; i++) {
-            GameObject bullet = Instantiate(bulletsPrefab, machineGun.position, Quaternion.identity, machineGun.transform);
-            bullet.GetComponent<BulletController>().BulletHits += ResetBullet;
-            bulletsLoaded.Enqueue(bullet);
-            
-        }
-        bulletsShooted = new List<GameObject>(maxMachineGunBullets);
+		
 	}
 	
 
@@ -35,7 +26,6 @@ public class PlayerController : MonoBehaviour {
 		HandleGravity ();
 		HandleHorizontalMoviment ();
 		HandleVerticalMoviment ();
-		FireMachineGun ();
 	}
 
 	void HandleHorizontalMoviment() {
@@ -71,28 +61,6 @@ public class PlayerController : MonoBehaviour {
 			g *= DELTA_GRAVITY;
 		}
 		transform.Translate (Vector2.down * g * Time.deltaTime);
-	}
-
-	void FireMachineGun() {
-		if (bulletsLoaded.Count > 0 && Input.GetKey(KeyCode.Space)) {
-			GameObject bullet = bulletsLoaded.Dequeue ();
-			Rigidbody2D bulletRgb = bullet.GetComponent<Rigidbody2D> ();
-			bullet.gameObject.SetActive (true);
-			bulletRgb.AddRelativeForce ( Vector2.right * BULLET_SPEED);
-			bullet.transform.parent = null;
-			bulletsShooted.Add (bullet);
-
-		}
-	}
-
-	
-	private void ResetBullet (object sender, EventArgs args) {
-        GameObject bullet = sender as GameObject;
-		bullet.SetActive(false);
-		bullet.transform.position = machineGun.position;
-		bullet.transform.parent = machineGun;
-		bulletsShooted.Remove(bullet);
-		bulletsLoaded.Enqueue(bullet);
 	}
 	
 }
