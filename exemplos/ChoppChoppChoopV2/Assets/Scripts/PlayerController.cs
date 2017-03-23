@@ -13,20 +13,21 @@ public class PlayerController : MonoBehaviour {
 	private List<GameObject> bulletsShooted;
 
 	private const float ROTATE_VELOCITY = 30f;
-	private const int BULLET_SPEED = 150;
 	private const float GRAVITY = 0.2f;
 	private const float DELTA_GRAVITY = 2f;
 
+    private float fixedXPos;
+
 	void Start () {
-		
+        fixedXPos = transform.position.x;
 	}
 	
 
-	void Update () {
-		HandleGravity ();
+	void Update () { 
 		HandleHorizontalMoviment ();
 		HandleVerticalMoviment ();
-	}
+        HandleGravity();
+    }
 
 	void HandleHorizontalMoviment() {
 		horizontalSpeed = Input.GetAxis ("Horizontal") * velocity.x;
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour {
 			}
             transform.Rotate (rotationDir, rotationSpeed);
 		}
+        transform.position = new Vector3(fixedXPos, transform.position.y);
 	}
 
 	void HandleVerticalMoviment() {

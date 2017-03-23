@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 50032205711927170}
   - component: {fileID: 61742207137121048}
   - component: {fileID: 114860354496437090}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: predio-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

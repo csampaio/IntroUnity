@@ -4,11 +4,17 @@ using UnityEngine;
 public class BulletController : MonoBehaviour {
 
     public event EventHandler BulletHits;
+    private new Collider2D collider;
 
-	void OnTriggerEnter2D(Collider2D other) {
+    private void Start()
+    {
+        collider = GetComponent<Collider2D>();
+    }
+
+    void OnTriggerEnter2D(Collider2D other) {
         EventHandler handle = BulletHits;
         int layerMask = LayerMask.GetMask("Default");
-        if ( other.IsTouchingLayers(layerMask) && handle != null)
+        if ( collider.IsTouchingLayers(layerMask) && handle != null)
         {
             handle(gameObject, EventArgs.Empty);
         }

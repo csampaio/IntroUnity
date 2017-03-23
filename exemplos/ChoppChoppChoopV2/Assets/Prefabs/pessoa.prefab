@@ -24,7 +24,8 @@ GameObject:
   - component: {fileID: 50534008932099104}
   - component: {fileID: 61309303272677296}
   - component: {fileID: 114365759518158160}
-  m_Layer: 0
+  - component: {fileID: 114690057187846618}
+  m_Layer: 11
   m_Name: pessoa
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,6 +90,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: fbcaaa2e914d8274b9f081f3a1f2a095, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: fbcaaa2e914d8274b9f081f3a1f2a095, type: 2}
+  - {fileID: 7400000, guid: 3bd4a825b3eb3e241993fd32ab8306e6, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
@@ -102,6 +104,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0d13abd3ea7cd840bd396cb71a2c2d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114690057187846618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224028581008960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69dac0f797a5452448c50439ddfda2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212907096917631862
@@ -136,6 +149,6 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 23c8e6b0f71b5fa4da117402b525b4e5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.03448276, g: 0.29411763, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
