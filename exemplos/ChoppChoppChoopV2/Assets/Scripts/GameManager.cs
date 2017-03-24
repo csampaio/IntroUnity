@@ -6,10 +6,14 @@ using System;
 
 public class GameManager : MonoBehaviour {
 
-    public Text bulletsCounter;
-    public Text bombCounter;
-    public Text scoreCounter;
-    public Text rescuesCounter;
+    public Text bulletsText;
+    public Text bombsText;
+    public Text scoreText;
+    public Text rescuesText;
+    public Text killedText;
+
+    private int killCounter = 0;
+    private int rescueCounter;
 
     private PlayerController player;
 
@@ -32,11 +36,34 @@ public class GameManager : MonoBehaviour {
 
         if (gun.name.Equals("BombLauncher"))
         {
-            bombCounter.text = "Bombs: " + counterText;
+            bombsText.text = "Bombs: " + counterText;
         } else if (gun.name.Equals("MachineGun"))
         {
 
-            bulletsCounter.text = "Bullets: " + counterText;
+            bulletsText.text = "Bullets: " + counterText;
         }
+    }
+
+    public void UpdateRescueCounter(object sender, EventArgs args)
+    {
+        PeopleController.PeopleArgs peopleArgs = args as PeopleController.PeopleArgs;
+        if (peopleArgs.isDead)
+        {
+            killCounter++;
+            killedText.text = "Killed: " + killCounter;
+        } else
+        {
+            rescueCounter++;
+            rescuesText.text = "Rescues: " + rescueCounter;
+        }
+
+        StartCoroutine(DestroyPeople(sender as GameObject));
+    }
+
+    private IEnumerator DestroyPeople(GameObject people)
+    {
+        yield return new WaitForSeconds(2);
+        people.SetActive(false);
+        DestroyImmediate(people);
     }
 }
