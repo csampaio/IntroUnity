@@ -36,11 +36,11 @@ public class GameManager : MonoBehaviour {
 
         if (gun.name.Equals("BombLauncher"))
         {
-            bombsText.text = "Bombs: " + counterText;
+            bombsText.text = counterText;
         } else if (gun.name.Equals("MachineGun"))
         {
 
-            bulletsText.text = "Bullets: " + counterText;
+            bulletsText.text = counterText;
         }
     }
 
@@ -50,11 +50,11 @@ public class GameManager : MonoBehaviour {
         if (peopleArgs.isDead)
         {
             killCounter++;
-            killedText.text = "Killed: " + killCounter;
+            killedText.text = killCounter.ToString();
         } else
         {
             rescueCounter++;
-            rescuesText.text = "Rescues: " + rescueCounter;
+            rescuesText.text = rescueCounter.ToString();
         }
 
         StartCoroutine(DestroyPeople(sender as GameObject));

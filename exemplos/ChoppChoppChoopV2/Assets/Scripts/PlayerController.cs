@@ -17,9 +17,11 @@ public class PlayerController : MonoBehaviour {
 	private const float DELTA_GRAVITY = 2f;
 
     private float fixedXPos;
+    private BoxCollider2D collider2d;
 
 	void Start () {
         fixedXPos = transform.position.x;
+        collider2d = GetComponent<BoxCollider2D>();
 	}
 	
 
@@ -64,5 +66,15 @@ public class PlayerController : MonoBehaviour {
 		}
 		transform.Translate (Vector2.down * g * Time.deltaTime);
 	}
-	
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        int layerMask = LayerMask.GetMask("EnemyBullet");
+        if (collider2d.IsTouchingLayers(layerMask))
+        {
+            Debug.Log("Black hank is down!");
+        }
+    }
+    
+
 }
