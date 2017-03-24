@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour {
     [Header("Chopp Config")]
 	public Vector2 velocity;
 	public float horizontalSpeed { get; set; }
+    public GameObject explosionPrefab;
 
     private Queue<GameObject> bulletsLoaded;
 	private List<GameObject> bulletsShooted;
@@ -18,10 +19,13 @@ public class PlayerController : MonoBehaviour {
 
     private float fixedXPos;
     private BoxCollider2D collider2d;
+    private new SpriteRenderer renderer;
+    private bool isDead = false;
 
 	void Start () {
         fixedXPos = transform.position.x;
         collider2d = GetComponent<BoxCollider2D>();
+        renderer = GetComponent<SpriteRenderer>();
 	}
 	
 
@@ -70,9 +74,11 @@ public class PlayerController : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int layerMask = LayerMask.GetMask("EnemyBullet");
-        if (collider2d.IsTouchingLayers(layerMask))
+        if (collider2d.IsTouchingLayers(layerMask) && !isDead)
         {
-            Debug.Log("Black hank is down!");
+            isDead = true;
+            renderer.enabled = false;
+            Instantiate(explosionPrefab, transform, false);
         }
     }
     
