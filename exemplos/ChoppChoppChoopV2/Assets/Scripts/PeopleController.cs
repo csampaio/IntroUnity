@@ -12,6 +12,9 @@ public class PeopleController : MonoBehaviour {
     private new Animation animation;
     private GameManager manager;
 
+    public AudioSource rescueSound;
+    public AudioSource deadSound;
+
     public event EventHandler PeopleHit;
 
     public class PeopleArgs: EventArgs
@@ -31,16 +34,18 @@ public class PeopleController : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        int layerMask = LayerMask.GetMask("Player", "Enemies", "Bullet");
+        int layerMask = LayerMask.GetMask("Player", "Enemies", "Bullet", "EnemyBullet", "Bomb");
 
         if (collider.IsTouchingLayers(layerMask))
         {
+            AudioSource sound = rescueSound;
             PeopleArgs args = new PeopleArgs();
             args.isDead = false;
-            layerMask = LayerMask.GetMask("Enemies", "Bullet");
+            layerMask = LayerMask.GetMask("Enemies", "Bullet", "EnemyBullet", "Bomb");
 
             if (collider.IsTouchingLayers(layerMask))
             {
+                sound = deadSound;
                 renderer.color = Color.red;
                 args.isDead = true;
             }
@@ -49,9 +54,15 @@ public class PeopleController : MonoBehaviour {
             collider.enabled = false;
             animation.Play("blink_people");
 
+            if (sound != null && !sound.isPlaying)
+            {
+                sound.Play();
+            }
+
             EventHandler handle = PeopleHit;
             if (handle != null)
             {
+
                 handle(gameObject, args);
             }
         }

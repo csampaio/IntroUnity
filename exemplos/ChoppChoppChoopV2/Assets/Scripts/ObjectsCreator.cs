@@ -7,6 +7,7 @@ public class ObjectsCreator : MonoBehaviour {
 	public GameObject[] builds;
 	public GameObject[] peoples;
 	public GameObject[] Enemies;
+    public GameObject[] Items;
 	public Transform spawnPoint;
 
     private PlayerController player;
@@ -17,6 +18,7 @@ public class ObjectsCreator : MonoBehaviour {
 		StartCoroutine(RandonSpawn(peoples, 2f, 5f));
         StartCoroutine(RandonSpawn(builds, 3f,7f));
         StartCoroutine(RandonSpawn(Enemies, 2f, 10f));
+        StartCoroutine(RandonSpawn(Items, 10, 20));
     }
 	
 

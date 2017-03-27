@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bullet
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -20,8 +21,8 @@ TagManager:
   - Peoples
   - Builds
   - EnemyBullet
-  - 
-  - 
+  - Bomb
+  - Limits
   - 
   - 
   - 

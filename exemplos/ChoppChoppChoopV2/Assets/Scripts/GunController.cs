@@ -12,6 +12,10 @@ public class GunController : MonoBehaviour {
     public KeyCode fireKey;
     public int bulletSpeed = 150;
     public float gunCoolDown = 1;
+    [Header("Sound Config")]
+    public AudioSource fireSound;
+    public AudioSource outOfAmmoSound;
+    public AudioSource reloadSound;
 
     private Queue<GameObject> bulletsLoaded;
     private List<GameObject> bulletsShooted;
@@ -41,12 +45,17 @@ public class GunController : MonoBehaviour {
 
     void Update () {
         if (Input.GetKey(fireKey))
+        {
             FireGun();
+        } else
+        {
+            if (fireSound != null && fireSound.isPlaying && fireKey != KeyCode.None)
+                fireSound.Pause();
+        }
 	}
 
     public void FireGun()
     {
-        
         if (bulletsLoaded.Count > 0 && cooldown <= Time.time)
         {
             GameObject bullet = bulletsLoaded.Dequeue();
@@ -57,6 +66,14 @@ public class GunController : MonoBehaviour {
             bulletsShooted.Add(bullet);
             ShootEvent();
             cooldown = Time.time + gunCoolDown;
+            if (fireSound != null && !fireSound.isPlaying)
+                fireSound.Play();
+        } else
+        {
+            if (outOfAmmoSound != null && !outOfAmmoSound.isPlaying)
+            {
+                outOfAmmoSound.Play();
+            }
         }
     }
 
@@ -78,7 +95,24 @@ public class GunController : MonoBehaviour {
         bullet.SetActive(false);
         bullet.transform.position = gunPosition.position;
         bullet.transform.parent = gunPosition;
-        bulletsShooted.Remove(bullet);
-        bulletsLoaded.Enqueue(bullet);
+        bullet.transform.rotation = gunPosition.rotation;
+    }
+
+    public void ReloadGun(object sender, EventArgs args)
+    {
+        AmmoBox.ReloadArgs reloadArgs = args as AmmoBox.ReloadArgs;
+        GameObject ammoBox = sender as GameObject;
+        if (ammoBox.CompareTag(this.gameObject.tag))
+        {
+            for (int i = 0; (i < reloadArgs.ammoNumber && bulletsShooted.Count > 0); i++)
+            {
+                GameObject bullet = bulletsShooted[0];
+                bulletsShooted.Remove(bullet);
+                bulletsLoaded.Enqueue(bullet);
+                if (bulletsShooted.Count <= 0)
+                    break;
+            }
+            ShootEvent();
+        }
     }
 }

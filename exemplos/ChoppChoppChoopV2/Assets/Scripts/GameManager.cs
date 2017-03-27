@@ -11,20 +11,28 @@ public class GameManager : MonoBehaviour {
     public Text scoreText;
     public Text rescuesText;
     public Text killedText;
+    public GameObject gameOver;
 
     private int killCounter = 0;
     private int rescueCounter;
 
     private PlayerController player;
 
-	// Use this for initialization
-	void Start () {
+    private void OnEnable()
+    {
         player = FindObjectOfType<PlayerController>();
-        GunController[] guns = player.GetComponentsInChildren<GunController>();	
+        GunController[] guns = player.GetComponentsInChildren<GunController>();
         foreach (GunController gun in guns)
         {
             gun.GunShoot += UpdateBulletsCounter;
         }
+
+        player.PlayerDied += ShowGameOver;
+    }
+
+    // Use this for initialization
+    void Start () {
+        
 	}
 	
 	
@@ -58,6 +66,11 @@ public class GameManager : MonoBehaviour {
         }
 
         StartCoroutine(DestroyPeople(sender as GameObject));
+    }
+
+    public void ShowGameOver(object sender, EventArgs args)
+    {
+        gameOver.SetActive(true);
     }
 
     private IEnumerator DestroyPeople(GameObject people)

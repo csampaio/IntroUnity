@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
     private new SpriteRenderer renderer;
     private bool isDead = false;
 
+    public event EventHandler PlayerDied;
+
 	void Start () {
         fixedXPos = transform.position.x;
         collider2d = GetComponent<BoxCollider2D>();
@@ -29,9 +31,12 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 
-	void Update () { 
-		HandleHorizontalMoviment ();
-		HandleVerticalMoviment ();
+	void Update () {
+        if (!isDead)
+        {
+            HandleHorizontalMoviment();
+            HandleVerticalMoviment();
+        }
         HandleGravity();
     }
 
@@ -71,14 +76,42 @@ public class PlayerController : MonoBehaviour {
 		transform.Translate (Vector2.down * g * Time.deltaTime);
 	}
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        BlackHankIsDown();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        int layerMask = LayerMask.GetMask("EnemyBullet");
+        BlackHankIsDown();
+    }
+
+    private void BlackHankIsDown()
+    {
+        int layerMask = LayerMask.GetMask("EnemyBullet", "Enemies");
         if (collider2d.IsTouchingLayers(layerMask) && !isDead)
         {
+            GetComponent<AudioSource>().Stop();
             isDead = true;
             renderer.enabled = false;
+            collider2d.enabled = false;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+            horizontalSpeed = 0;
+            GunController[] guns = GetComponentsInChildren<GunController>();
+            foreach (GunController gun in guns)
+            {
+                gun.gameObject.SetActive(false);
+            }
             Instantiate(explosionPrefab, transform, false);
+            Invoke("DeathEvent", 2);
+        }
+    }
+
+    private void DeathEvent()
+    {
+        if (PlayerDied != null)
+        {
+            PlayerDied(gameObject, EventArgs.Empty);
         }
     }
     

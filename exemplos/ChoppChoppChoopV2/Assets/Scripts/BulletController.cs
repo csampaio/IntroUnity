@@ -9,6 +9,7 @@ public class BulletController : MonoBehaviour {
     public event EventHandler BulletHits;
     private new Collider2D collider;
     private bool hit = false;
+    public int hitPoints = 1;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class BulletController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D other) {
         
-        int layerMask = LayerMask.GetMask("Default");
+        int layerMask = LayerMask.GetMask("Default","Enemies","Peoples");
         if ( collider.IsTouchingLayers(layerMask) && !hit)
         {
             hit = true;
@@ -25,21 +26,31 @@ public class BulletController : MonoBehaviour {
         }
 	}
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (LayerMask.LayerToName(collision.gameObject.layer).Equals("Limits"))
+        {
+            if (BulletHits != null)
+                BulletHits(gameObject, EventArgs.Empty);
+        }
+    }
+
     IEnumerator Kaboom()
     {
         Rigidbody2D rgbody = GetComponent<Rigidbody2D>();
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        rgbody.bodyType = RigidbodyType2D.Static;
+        rgbody.bodyType = RigidbodyType2D.Kinematic;
+        rgbody.velocity = Vector2.zero;   
         renderer.enabled = false;
         if (explosionPrefab != null)
             Instantiate(explosionPrefab, transform, false);
         
         yield return new WaitForSeconds(2);
-        rgbody.bodyType = RigidbodyType2D.Kinematic;
+        rgbody.bodyType = RigidbodyType2D.Dynamic;
         renderer.enabled = true;
-        EventHandler handle = BulletHits;
-        if (handle != null)
-            handle(gameObject, EventArgs.Empty);
+        
+        if (BulletHits != null)
+            BulletHits(gameObject, EventArgs.Empty);
 
     }
 }
