@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour {
 	private const float GRAVITY = 0.2f;
 	private const float DELTA_GRAVITY = 2f;
 
+    private int verticalDirection = 0;
+
     private float fixedXPos;
     private BoxCollider2D collider2d;
     private new SpriteRenderer renderer;
@@ -41,7 +43,16 @@ public class PlayerController : MonoBehaviour {
     }
 
 	void HandleHorizontalMoviment() {
-		horizontalSpeed = Input.GetAxis ("Horizontal") * velocity.x;
+#if UNITY_ANDROID || UNITY_IOS
+        float h = 0;
+        if (Input.acceleration.x > 0.15 || Input.acceleration.x < -0.15)
+        {
+            h = Input.acceleration.x;
+        }
+        horizontalSpeed = h * velocity.x;
+#else
+        horizontalSpeed = Input.GetAxis ("Horizontal") * velocity.x;
+#endif
 		float rotationSpeed = Time.deltaTime * velocity.x * ROTATE_VELOCITY;
 		Vector3 rotationDir = Vector3.one;
 
@@ -64,9 +75,19 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void HandleVerticalMoviment() {
-		float verticalSpeed = Input.GetAxis ("Vertical") * velocity.y;
-		transform.Translate (Vector2.up * verticalSpeed * Time.deltaTime);
+#if UNITY_ANDROID || UNITY_IOS
+        float verticalSpeed = verticalDirection * velocity.y;
+#else
+        float verticalSpeed = Input.GetAxis ("Vertical") * velocity.y;
+#endif
+
+        transform.Translate (Vector2.up * verticalSpeed * Time.deltaTime);
 	}
+
+    public void MoveVertically(int direction)
+    {
+        verticalDirection = direction;
+    }
 
 	void HandleGravity() {
 		float g = GRAVITY;

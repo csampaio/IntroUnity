@@ -20,6 +20,7 @@ public class GunController : MonoBehaviour {
     private Queue<GameObject> bulletsLoaded;
     private List<GameObject> bulletsShooted;
     private float cooldown = 0;
+    private bool triggerPulled = false;
 
     public event EventHandler GunShoot;
 
@@ -44,7 +45,7 @@ public class GunController : MonoBehaviour {
     }
 
     void Update () {
-        if (Input.GetKey(fireKey))
+        if (Input.GetKey(fireKey) || triggerPulled)
         {
             FireGun();
         } else
@@ -53,6 +54,11 @@ public class GunController : MonoBehaviour {
                 fireSound.Pause();
         }
 	}
+
+    public void PullTheTrigger(bool trigger)
+    {
+        triggerPulled = trigger;
+    }
 
     public void FireGun()
     {
@@ -68,7 +74,7 @@ public class GunController : MonoBehaviour {
             cooldown = Time.time + gunCoolDown;
             if (fireSound != null && !fireSound.isPlaying)
                 fireSound.Play();
-        } else
+        } else if (bulletsLoaded.Count <= 0)
         {
             if (outOfAmmoSound != null && !outOfAmmoSound.isPlaying)
             {

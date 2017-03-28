@@ -6,31 +6,35 @@ using UnityEngine;
 
 public class ShareScreenshot : MonoBehaviour {
 
-	public void CaptureAndShareScreenshot()
-	{
-		CaptureScreenshot ();
-		ShareScreenshotImage ();
-	}
+    private string filePath;
 
-	public void CaptureScreenshot()
+    public void CaptureAndShareScreenshot()
+	{
+        filePath = Application.persistentDataPath + "/temp.jpg";
+        CaptureScreenshot();
+        ShareScreenshotImage ();
+    }
+
+	private void CaptureScreenshot()
 	{
 		// Salvar a tela dentro de uma texture
 		Texture2D tex = new Texture2D (Screen.width, Screen.height);
 		tex.ReadPixels (new Rect (0, 0, Screen.width, Screen.height), 0, 0);
-		// Salva a texture em um arquivo JPG
-		byte[] bytes = tex.EncodeToJPG();
+        tex.Apply();
+        // Salva a texture em um arquivo JPG
+        byte[] bytes = tex.EncodeToJPG();
+        Object.Destroy(tex);
 
-		string filepath = GetAndroidExternalStoragePath () + 
-									"/temporary_file.jpg";
 
-		if (File.Exists (filepath)) {
-			File.Delete (filepath);
+        if (File.Exists (filePath)) {
+			File.Delete (filePath);
 		}
-		File.WriteAllBytes (filepath, bytes); // salva a imagem
+		File.WriteAllBytes (filePath, bytes); // salva a imagem
 
 	}
 
-	public void ShareScreenshotImage()
+
+    private void ShareScreenshotImage()
 	{
 		AndroidJavaClass intentClass 
 			= new AndroidJavaClass ("android.content.Intent");
@@ -45,8 +49,7 @@ public class ShareScreenshot : MonoBehaviour {
 		AndroidJavaClass uriClass 
 			= new AndroidJavaClass ("android.net.Uri");
 		AndroidJavaObject fileObject 
-			= new AndroidJavaObject ("java.io.File", 
-				GetAndroidExternalStoragePath() + "/temporary_file.jpg");
+			= new AndroidJavaObject ("java.io.File", filePath);
 
 		AndroidJavaObject uriObject  
 			= uriClass.CallStatic<AndroidJavaObject>("fromFile", fileObject);
@@ -58,7 +61,7 @@ public class ShareScreenshot : MonoBehaviour {
 		curActivity.Call ("startActivity", intentObject);
 	}
 
-	public void NativeShareScreenshot()
+    private void NativeShareScreenshot()
 	{
 		AndroidJavaClass jc 
 			= new AndroidJavaClass (
@@ -68,14 +71,14 @@ public class ShareScreenshot : MonoBehaviour {
 		jc.CallStatic ("ShareScreenshot", GetCurrentActivity());
 	}
 
-	public AndroidJavaObject GetCurrentActivity()
+	private AndroidJavaObject GetCurrentActivity()
 	{
 		AndroidJavaClass jc 
 			= new AndroidJavaClass ("com.unity3d.player.UnityPlayer");
 		return jc.GetStatic<AndroidJavaObject> ("currentActivity");
 	}
 
-	public string GetAndroidExternalStoragePath()
+	private string GetAndroidExternalStoragePath()
 	{
 		string path = " ";
 
@@ -88,17 +91,5 @@ public class ShareScreenshot : MonoBehaviour {
 
 		return path;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

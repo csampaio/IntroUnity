@@ -7,8 +7,6 @@ public class AmmoBox : MonoBehaviour {
     public int ammoNumber = 10;
     public AudioSource gotSound;
 
-    private new Collider2D collider;
-
     public event EventHandler ReloadEvent;
 
     public class ReloadArgs: EventArgs
@@ -18,7 +16,6 @@ public class AmmoBox : MonoBehaviour {
 
     public void Start()
     {
-        collider = GetComponent<Collider2D>();
         PlayerController player = FindObjectOfType<PlayerController>();
         GunController[] guns = player.GetComponentsInChildren<GunController>();
         foreach( GunController gun in guns)
