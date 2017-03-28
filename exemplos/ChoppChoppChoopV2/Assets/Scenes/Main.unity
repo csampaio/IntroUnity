@@ -1567,6 +1567,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114118206065243366, guid: 5ecf33ec582b251498f572dadcdee851,
+        type: 2}
+      propertyPath: maxBullets
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ecf33ec582b251498f572dadcdee851, type: 2}
   m_IsPrefabParent: 0
